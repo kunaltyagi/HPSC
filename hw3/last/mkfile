@@ -1,0 +1,27 @@
+.phony: all clean
+
+HDRS = matrix.h
+CPP = nvcc
+CPPFLAGS = -std=c++14 -Wall -Wextra
+DEBUG = -g
+CUDA_LIBS = -lcuda -lcudart
+INC_LOCATION = -I./ -I/usr/local/cuda/include
+LINK_LOCATION= -L/usr/local/cuda/lib -L/usr/local/cuda/lib64
+
+all: cuMatMul
+
+cuMatMul: main.o mat_mul_link.o matrix.o
+	g++ ${CPPFLAGS} -o cuMatMul main.o mat_mul_link.o matrix.o ${CUDA_LIBS} ${INC_LOCATION} ${LINK_LOCATION}
+
+main.o: main.cpp ${HDRS}
+	g++ ${CPPFLAGS} -c main.cpp ${HDRS} ${INC_LOCATION}
+
+mat_mul_link.o: matrix.o
+	nvcc -arch=sm_50 -dlink -o mat_mul_link.o matrix.o ${CUDA_LIBS} ${INC_LOCATION} -lcudadevrt
+
+matrix.o: matrix.cu
+	nvcc -arch=sm_50 -rdc=true -c matrix.cu ${INC_LOCATION}
+
+clean:
+	rm *.o
+	rm cuMatMul

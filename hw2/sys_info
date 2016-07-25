@@ -1,0 +1,1253 @@
+$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+Thread(s) per core:    2
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 61
+Stepping:              4
+CPU MHz:               1570.687
+BogoMIPS:              4788.48
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              4096K
+NUMA node0 CPU(s):     0-3
+
+$ free
+             total       used       free     shared    buffers     cached
+Mem:       8085476    3838064    4247412      56380      88636     665464
+-/+ buffers/cache:    3083964    5001512
+Swap:     15995900     860160   15135740
+
+$ dmidecode --type 17
+# dmidecode 2.12
+# SMBIOS entry point at 0x000f05b0
+SMBIOS 2.8 present.
+
+Handle 0x002F, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x002E
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 8192 MB
+	Form Factor: SODIMM
+	Set: None
+	Locator: DIMM_A
+	Bank Locator: BANK 0
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1600 MHz
+	Manufacturer: Hynix/Hyundai
+	Serial Number: 3A1AE52B
+	Asset Tag: 01154900  
+	Part Number: HMT41GS6BFR8A-PB  
+	Rank: 2
+	Configured Clock Speed: 1600 MHz
+
+
+$ lshw -short -C memory
+H/W path       Device      Class          Description
+=====================================================
+/0/0                       memory         64KiB BIOS
+/0/2c/29                   memory         32KiB L1 cache
+/0/2c/2a                   memory         256KiB L2 cache
+/0/2c/2b                   memory         4MiB L3 cache
+/0/28                      memory         32KiB L1 cache
+/0/2e                      memory         8GiB System Memory
+/0/2e/0                    memory         8GiB SODIMM DDR3 Synchronous 1600 MHz (0.6 ns)
+
+$ uname -a
+Linux alien 3.19.0-51-generic #58~14.04.1-Ubuntu SMP Fri Feb 26 22:02:58 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.04.4 LTS
+Release:	14.04
+Codename:	trusty
+
+$ lspci
+00:00.0 Host bridge: Intel Corporation Broadwell-U Host Bridge -OPI (rev 09)
+00:02.0 VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics (rev 09)
+00:03.0 Audio device: Intel Corporation Broadwell-U Audio Controller (rev 09)
+00:14.0 USB controller: Intel Corporation Wildcat Point-LP USB xHCI Controller (rev 03)
+00:16.0 Communication controller: Intel Corporation Wildcat Point-LP MEI Controller #1 (rev 03)
+00:1b.0 Audio device: Intel Corporation Wildcat Point-LP High Definition Audio Controller (rev 03)
+00:1c.0 PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #1 (rev e3)
+00:1c.2 PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #3 (rev e3)
+00:1c.3 PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #4 (rev e3)
+00:1c.4 PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #5 (rev e3)
+00:1d.0 USB controller: Intel Corporation Wildcat Point-LP USB EHCI Controller (rev 03)
+00:1f.0 ISA bridge: Intel Corporation Wildcat Point-LP LPC Controller (rev 03)
+00:1f.2 SATA controller: Intel Corporation Wildcat Point-LP SATA Controller [AHCI Mode] (rev 03)
+00:1f.3 SMBus: Intel Corporation Wildcat Point-LP SMBus Controller (rev 03)
+06:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
+07:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8101/2/6E PCI Express Fast/Gigabit Ethernet controller (rev 07)
+08:00.0 3D controller: NVIDIA Corporation GM108M [GeForce 840M] (rev a2)
+
+$ lshw
+alien
+    description: Portable Computer
+    product: Inspiron 3543 (0656)
+    vendor: Dell Inc.
+    version: A07
+    serial: H488B32
+    width: 64 bits
+    capabilities: smbios-2.8 dmi-2.8 vsyscall32
+    configuration: boot=normal chassis=portable sku=0656 uuid=44454C4C-3400-1038-8038-C8C04F423332
+  *-core
+       description: Motherboard
+       product: 0V162V
+       vendor: Dell Inc.
+       physical id: 0
+       serial: .H488B32.CN762065860DPT.
+     *-firmware
+          description: BIOS
+          vendor: Dell Inc.
+          physical id: 0
+          version: A07
+          date: 10/16/2015
+          size: 64KiB
+          capacity: 8128KiB
+          capabilities: pci pnp upgrade shadowing cdboot bootselect edd int13floppy1200 int13floppy720 int13floppy2880 int5printscreen int9keyboard int14serial int17printer int10video acpi usb zipboot smartbattery biosbootspecification uefi
+     *-cpu
+          description: CPU
+          product: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+          vendor: Intel Corp.
+          physical id: 2c
+          bus info: cpu@0
+          version: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+          serial: NULL
+          slot: SOCKET 0
+          size: 2966MHz
+          capacity: 2966MHz
+          width: 64 bits
+          clock: 100MHz
+          capabilities: x86-64 fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap xsaveopt cpufreq
+          configuration: cores=2 enabledcores=2 threads=4
+        *-cache:0
+             description: L1 cache
+             physical id: 29
+             slot: L1 Cache
+             size: 32KiB
+             capacity: 32KiB
+             capabilities: synchronous internal write-back instruction
+        *-cache:1
+             description: L2 cache
+             physical id: 2a
+             slot: L2 Cache
+             size: 256KiB
+             capacity: 256KiB
+             capabilities: synchronous internal write-back unified
+        *-cache:2
+             description: L3 cache
+             physical id: 2b
+             slot: L3 Cache
+             size: 4MiB
+             capacity: 4MiB
+             capabilities: synchronous internal write-back unified
+     *-cache
+          description: L1 cache
+          physical id: 28
+          slot: L1 Cache
+          size: 32KiB
+          capacity: 32KiB
+          capabilities: synchronous internal write-back data
+     *-memory
+          description: System Memory
+          physical id: 2e
+          slot: System board or motherboard
+          size: 8GiB
+        *-bank
+             description: SODIMM DDR3 Synchronous 1600 MHz (0.6 ns)
+             product: HMT41GS6BFR8A-PB
+             vendor: Hynix/Hyundai
+             physical id: 0
+             serial: 3A1AE52B
+             slot: DIMM_A
+             size: 8GiB
+             width: 64 bits
+             clock: 1600MHz (0.6ns)
+     *-pci
+          description: Host bridge
+          product: Broadwell-U Host Bridge -OPI
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 09
+          width: 32 bits
+          clock: 33MHz
+        *-display
+             description: VGA compatible controller
+             product: Broadwell-U Integrated Graphics
+             vendor: Intel Corporation
+             physical id: 2
+             bus info: pci@0000:00:02.0
+             version: 09
+             width: 64 bits
+             clock: 33MHz
+             capabilities: msi pm vga_controller bus_master cap_list rom
+             configuration: driver=i915_bpo latency=0
+             resources: irq:50 memory:a9000000-a9ffffff memory:b0000000-bfffffff ioport:5000(size=64)
+        *-multimedia:0
+             description: Audio device
+             product: Broadwell-U Audio Controller
+             vendor: Intel Corporation
+             physical id: 3
+             bus info: pci@0000:00:03.0
+             version: 09
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pm msi pciexpress bus_master cap_list
+             configuration: driver=snd_hda_intel latency=0
+             resources: irq:49 memory:ab314000-ab317fff
+        *-usb:0
+             description: USB controller
+             product: Wildcat Point-LP USB xHCI Controller
+             vendor: Intel Corporation
+             physical id: 14
+             bus info: pci@0000:00:14.0
+             version: 03
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pm msi xhci bus_master cap_list
+             configuration: driver=xhci_hcd latency=0
+             resources: irq:46 memory:ab300000-ab30ffff
+        *-communication
+             description: Communication controller
+             product: Wildcat Point-LP MEI Controller #1
+             vendor: Intel Corporation
+             physical id: 16
+             bus info: pci@0000:00:16.0
+             version: 03
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pm msi bus_master cap_list
+             configuration: driver=mei_me latency=0
+             resources: irq:51 memory:ab31c000-ab31c01f
+        *-multimedia:1
+             description: Audio device
+             product: Wildcat Point-LP High Definition Audio Controller
+             vendor: Intel Corporation
+             physical id: 1b
+             bus info: pci@0000:00:1b.0
+             version: 03
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pm msi bus_master cap_list
+             configuration: driver=snd_hda_intel latency=32
+             resources: irq:52 memory:ab310000-ab313fff
+        *-pci:0
+             description: PCI bridge
+             product: Wildcat Point-LP PCI Express Root Port #1
+             vendor: Intel Corporation
+             physical id: 1c
+             bus info: pci@0000:00:1c.0
+             version: e3
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:42 ioport:2000(size=4096) memory:a8100000-a82fffff ioport:a8300000(size=2097152)
+        *-pci:1
+             description: PCI bridge
+             product: Wildcat Point-LP PCI Express Root Port #3
+             vendor: Intel Corporation
+             physical id: 1c.2
+             bus info: pci@0000:00:1c.2
+             version: e3
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:43 ioport:6000(size=4096) memory:ab200000-ab2fffff ioport:a8500000(size=2097152)
+           *-network
+                description: Wireless interface
+                product: BCM43142 802.11b/g/n
+                vendor: Broadcom Corporation
+                physical id: 0
+                bus info: pci@0000:06:00.0
+                logical name: wlan0
+                version: 01
+                serial: ac:d1:b8:d0:11:3b
+                width: 64 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list ethernet physical wireless
+                configuration: broadcast=yes driver=wl0 driverversion=6.30.223.248 (r487574) ip=192.168.0.104 latency=0 multicast=yes wireless=IEEE 802.11abg
+                resources: irq:18 memory:ab200000-ab207fff
+        *-pci:2
+             description: PCI bridge
+             product: Wildcat Point-LP PCI Express Root Port #4
+             vendor: Intel Corporation
+             physical id: 1c.3
+             bus info: pci@0000:00:1c.3
+             version: e3
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:44 ioport:4000(size=4096) memory:ab100000-ab1fffff ioport:d2100000(size=1048576)
+           *-network
+                description: Ethernet interface
+                product: RTL8101/2/6E PCI Express Fast/Gigabit Ethernet controller
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:07:00.0
+                logical name: eth1
+                version: 07
+                serial: 20:47:47:1e:4b:cb
+                size: 10Mbit/s
+                capacity: 100Mbit/s
+                width: 64 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress msix vpd bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=r8169 driverversion=2.3LK-NAPI duplex=half firmware=rtl8106e-1_0.0.1 06/29/12 latency=0 link=no multicast=yes port=MII speed=10Mbit/s
+                resources: irq:47 ioport:4000(size=256) memory:ab100000-ab100fff memory:d2100000-d2103fff
+        *-pci:3
+             description: PCI bridge
+             product: Wildcat Point-LP PCI Express Root Port #5
+             vendor: Intel Corporation
+             physical id: 1c.4
+             bus info: pci@0000:00:1c.4
+             version: e3
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:45 ioport:3000(size=4096) memory:aa000000-ab0fffff ioport:c0000000(size=301989888)
+           *-display
+                description: 3D controller
+                product: GM108M [GeForce 840M]
+                vendor: NVIDIA Corporation
+                physical id: 0
+                bus info: pci@0000:08:00.0
+                version: a2
+                width: 64 bits
+                clock: 33MHz
+                capabilities: pm msi pciexpress bus_master cap_list rom
+                configuration: driver=nvidia latency=0
+                resources: irq:53 memory:aa000000-aaffffff memory:c0000000-cfffffff memory:d0000000-d1ffffff ioport:3000(size=128) memory:ab000000-ab07ffff
+        *-usb:1
+             description: USB controller
+             product: Wildcat Point-LP USB EHCI Controller
+             vendor: Intel Corporation
+             physical id: 1d
+             bus info: pci@0000:00:1d.0
+             version: 03
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pm debug ehci bus_master cap_list
+             configuration: driver=ehci-pci latency=0
+             resources: irq:23 memory:ab31a000-ab31a3ff
+        *-isa
+             description: ISA bridge
+             product: Wildcat Point-LP LPC Controller
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 03
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master cap_list
+             configuration: driver=lpc_ich latency=0
+             resources: irq:0
+        *-storage
+             description: SATA controller
+             product: Wildcat Point-LP SATA Controller [AHCI Mode]
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 03
+             width: 32 bits
+             clock: 66MHz
+             capabilities: storage msi pm ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:48 ioport:50b0(size=8) ioport:50a0(size=4) ioport:5090(size=8) ioport:5080(size=4) ioport:5060(size=32) memory:ab319000-ab3197ff
+        *-serial UNCLAIMED
+             description: SMBus
+             product: Wildcat Point-LP SMBus Controller
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 03
+             width: 64 bits
+             clock: 33MHz
+             configuration: latency=0
+             resources: memory:ab318000-ab3180ff ioport:5040(size=32)
+     *-scsi:0
+          physical id: 1
+          logical name: scsi0
+          capabilities: emulated
+        *-disk
+             description: ATA Disk
+             product: ST1000LM024 HN-M
+             vendor: Seagate
+             physical id: 0.0.0
+             bus info: scsi@0:0.0.0
+             logical name: /dev/sda
+             version: 0003
+             serial: S314JB0G122844
+             size: 931GiB (1TB)
+             capabilities: gpt-1.00 partitioned partitioned:gpt
+             configuration: ansiversion=5 guid=e1933a1e-1fbd-438f-b468-e4d900d34eb5 sectorsize=4096
+           *-volume:0
+                description: Windows FAT volume
+                vendor: MSDOS5.0
+                physical id: 1
+                bus info: scsi@0:0.0.0,1
+                logical name: /dev/sda1
+                logical name: /boot/efi
+                version: FAT32
+                serial: 8805-cb21
+                size: 495MiB
+                capacity: 499MiB
+                capabilities: boot fat initialized
+                configuration: FATs=2 filesystem=fat mount.fstype=vfat mount.options=rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro name=EFI system partition state=mounted
+           *-volume:1
+                description: Windows FAT volume
+                vendor: MSDOS5.0
+                physical id: 2
+                bus info: scsi@0:0.0.0,2
+                logical name: /dev/sda2
+                version: FAT32
+                serial: da5f-2974
+                size: 15MiB
+                capacity: 39MiB
+                capabilities: precious readonly hidden nomount fat initialized
+                configuration: FATs=2 filesystem=fat name=Basic data partition
+           *-volume:2
+                description: reserved partition
+                vendor: Windows
+                physical id: 3
+                bus info: scsi@0:0.0.0,3
+                logical name: /dev/sda3
+                serial: 233565c3-7638-4158-856c-4882c3e7080c
+                capacity: 127MiB
+                capabilities: nofs
+                configuration: name=Microsoft reserved partition
+           *-volume:3
+                description: Windows NTFS volume
+                vendor: Windows
+                physical id: 4
+                bus info: scsi@0:0.0.0,4
+                logical name: /dev/sda4
+                version: 3.1
+                serial: 6460-82c8
+                size: 720MiB
+                capacity: 749MiB
+                capabilities: boot precious readonly hidden nomount ntfs initialized
+                configuration: clustersize=4096 created=2015-05-07 04:58:37 filesystem=ntfs label=WINRETOOLS modified_by_chkdsk=true mounted_on_nt4=true name=Basic data partition resize_log_file=true state=dirty upgrade_on_mount=true
+           *-volume:4
+                description: Windows NTFS volume
+                vendor: Windows
+                physical id: 5
+                bus info: scsi@0:0.0.0,5
+                logical name: /dev/sda5
+                logical name: /media/kunal/OS
+                version: 3.1
+                serial: a6d05f63-23d2-3441-85fb-5182a1f88d15
+                size: 464GiB
+                capacity: 464GiB
+                capabilities: ntfs initialized
+                configuration: clustersize=4096 created=2015-05-07 04:58:42 filesystem=ntfs label=OS mount.fstype=fuseblk mount.options=rw,nosuid,nodev,relatime,user_id=0,group_id=0,default_permissions,allow_other,blksize=4096 name=Basic data partition state=mounted
+           *-volume:5
+                description: Windows NTFS volume
+                vendor: Windows
+                physical id: 6
+                bus info: scsi@0:0.0.0,6
+                logical name: /dev/sda6
+                version: 3.1
+                serial: ca4c8950-53c4-b24f-afd3-5f9644d2f863
+                size: 202GiB
+                capacity: 202GiB
+                capabilities: ntfs initialized
+                configuration: clustersize=4096 created=2015-08-31 20:55:38 filesystem=ntfs label=Share modified_by_chkdsk=true mounted_on_nt4=true name=Basic data partition resize_log_file=true state=dirty upgrade_on_mount=true
+           *-volume:6
+                description: Windows NTFS volume
+                vendor: Windows
+                physical id: 7
+                bus info: scsi@0:0.0.0,7
+                logical name: /dev/sda7
+                version: 3.1
+                serial: e6e7-d30c
+                size: 9050MiB
+                capacity: 9075MiB
+                capabilities: boot precious readonly hidden nomount ntfs initialized
+                configuration: clustersize=4096 created=2015-05-07 06:49:45 filesystem=ntfs label=PBR Image modified_by_chkdsk=true mounted_on_nt4=true name=Microsoft recovery partition resize_log_file=true state=dirty upgrade_on_mount=true
+           *-volume:7
+                description: EXT4 volume
+                vendor: Linux
+                physical id: 8
+                bus info: scsi@0:0.0.0,8
+                logical name: /dev/sda8
+                logical name: /
+                logical name: /var/lib/docker/aufs
+                version: 1.0
+                serial: 15c8e928-21a8-429d-bee2-806f78672b90
+                size: 33GiB
+                capabilities: journaled extended_attributes large_files huge_files dir_nlink recover extents ext4 ext2 initialized
+                configuration: created=2015-09-01 05:09:17 filesystem=ext4 lastmountpoint=/ modified=2016-03-17 20:54:35 mount.fstype=ext4 mount.options=rw,relatime,errors=remount-ro,data=ordered mounted=2016-03-17 20:54:36 state=mounted
+           *-volume:8
+                description: Linux swap volume
+                vendor: Linux
+                physical id: 9
+                bus info: scsi@0:0.0.0,9
+                logical name: /dev/sda9
+                version: 1
+                serial: 80049a1e-417e-47d6-81fa-6ecb3440e04d
+                size: 15GiB
+                capacity: 15GiB
+                capabilities: nofs swap initialized
+                configuration: filesystem=swap pagesize=4095
+           *-volume:9
+                description: EXT4 volume
+                vendor: Linux
+                physical id: a
+                bus info: scsi@0:0.0.0,10
+                logical name: /dev/sda10
+                logical name: /home
+                version: 1.0
+                serial: 379db135-077a-4f74-93bf-c565b3978968
+                size: 205GiB
+                capabilities: journaled extended_attributes large_files huge_files dir_nlink recover extents ext4 ext2 initialized
+                configuration: created=2015-09-01 05:09:20 filesystem=ext4 lastmountpoint=/home modified=2016-03-17 20:54:36 mount.fstype=ext4 mount.options=rw,relatime,data=ordered mounted=2016-03-17 20:54:36 state=mounted
+     *-scsi:1
+          physical id: 2
+          logical name: scsi1
+          capabilities: emulated
+        *-cdrom
+             description: DVD-RAM writer
+             product: DVD+-RW DU-8A5LH
+             vendor: PLDS
+             physical id: 0.0.0
+             bus info: scsi@1:0.0.0
+             logical name: /dev/cdrom
+             logical name: /dev/sr0
+             version: DD11
+             capabilities: removable audio cd-r cd-rw dvd dvd-r dvd-ram
+             configuration: ansiversion=5 status=nodisc
+  *-battery
+       description: Lithium Ion Battery
+       product: DELL XRDW253
+       vendor: Samsung SDI
+       physical id: 1
+       serial: 11372
+       slot: Sys. Battery Bay
+       capacity: 41440mWh
+       configuration: voltage=14.8V
+
+$ dmidecode
+# dmidecode 2.12
+# SMBIOS entry point at 0x000f05b0
+SMBIOS 2.8 present.
+62 structures occupying 3555 bytes.
+Table at 0x000EC690.
+
+Handle 0xDA00, DMI type 218, 251 bytes
+OEM-specific Type
+	Header and Data:
+		DA FB 00 DA B2 00 0D 5F 0F 37 40 7D 00 00 00 00
+		00 7E 00 01 00 00 00 75 01 01 80 01 00 76 01 02
+		80 01 00 4F 02 05 80 01 00 50 02 06 80 00 00 E2
+		01 02 00 00 00 E1 01 02 00 01 00 E3 01 02 00 02
+		00 9C 00 03 00 01 00 9B 00 03 00 00 00 8A 01 04
+		00 01 00 89 01 04 00 00 00 7F 01 05 00 00 00 80
+		01 05 00 01 00 53 01 06 00 00 00 52 01 06 00 01
+		00 7B 01 07 00 00 00 7C 01 07 00 01 00 94 01 08
+		00 00 00 93 01 08 00 01 00 7D 00 09 00 00 00 2D
+		00 0A 00 01 00 2E 00 0A 00 00 00 6E 00 0B 00 00
+		00 95 00 0C 00 01 00 96 00 0C 00 00 00 2F 02 0D
+		00 01 00 30 02 0D 00 00 00 4B 01 63 80 01 00 4A
+		01 64 80 01 00 7A 03 0E 00 04 00 7B 03 0E 00 00
+		00 EA 00 0F 00 00 00 EB 00 0F 00 01 00 37 01 66
+		80 01 00 38 01 67 80 01 00 39 01 68 80 01 00 20
+		04 C0 80 01 00 FF FF 00 00 00 00
+
+Handle 0xDA01, DMI type 218, 251 bytes
+OEM-specific Type
+	Header and Data:
+		DA FB 01 DA B2 00 0D 5F 0F 37 40 21 04 C1 80 01
+		00 3D 03 6B 80 01 00 3E 03 6C 80 01 00 2E 02 07
+		80 01 00 2D 02 08 80 01 00 4F 03 09 80 01 00 50
+		03 0A 80 01 00 0E 01 69 80 01 00 0F 01 6A 80 01
+		00 47 01 6D 80 01 00 46 01 6E 80 01 00 36 03 4D
+		80 01 00 37 03 4E 80 01 00 84 03 6F 80 01 00 85
+		03 70 80 01 00 86 03 71 80 01 00 87 03 72 80 01
+		00 88 03 73 80 01 00 89 03 74 80 01 00 8A 03 75
+		80 01 00 8B 03 76 80 01 00 8C 03 77 80 01 00 8D
+		03 78 80 01 00 8F 03 79 80 01 00 90 03 7A 80 01
+		00 91 03 7B 80 01 00 92 03 7C 80 01 00 93 03 7D
+		80 01 00 94 03 7E 80 01 00 95 03 7F 80 01 00 96
+		03 80 80 01 00 97 03 81 80 01 00 98 03 82 80 01
+		00 99 03 83 80 01 00 9B 03 85 80 01 00 9C 03 86
+		80 01 00 9D 03 87 80 01 00 9E 03 88 80 01 00 9F
+		03 89 80 01 00 FF FF 00 00 00 00
+
+Handle 0xDA02, DMI type 218, 221 bytes
+OEM-specific Type
+	Header and Data:
+		DA DD 02 DA B2 00 0D 5F 0F 37 40 00 04 90 80 01
+		00 01 04 9A 80 01 00 02 04 9B 80 01 00 03 04 9C
+		80 01 00 04 04 9D 80 01 00 05 04 9E 80 01 00 06
+		04 9F 80 01 00 07 04 A0 80 01 00 08 04 A1 80 01
+		00 09 04 A2 80 01 00 0A 04 A3 80 01 00 0B 04 A4
+		80 01 00 0C 04 A5 80 01 00 0D 04 A6 80 01 00 0E
+		04 A7 80 01 00 0F 04 A8 80 01 00 10 04 A9 80 01
+		00 11 04 AA 80 01 00 12 04 AB 80 01 00 13 04 AC
+		80 01 00 14 04 AD 80 01 00 16 04 AF 80 01 00 17
+		04 B0 80 01 00 18 04 B1 80 01 00 19 04 B2 80 01
+		00 1A 04 B3 80 01 00 1B 04 B4 80 01 00 1C 04 B5
+		80 01 00 1D 04 B6 80 01 00 A2 03 B7 80 01 00 A3
+		03 B8 80 01 00 C1 03 B9 80 01 00 C2 03 BA 80 01
+		00 C3 03 BB 80 01 00 FF FF 00 00 00 00
+
+Handle 0x0000, DMI type 0, 24 bytes
+BIOS Information
+	Vendor: Dell Inc.
+	Version: A07
+	Release Date: 10/16/2015
+	Address: 0xF0000
+	Runtime Size: 64 kB
+	ROM Size: 8192 kB
+	Characteristics:
+		PCI is supported
+		PNP is supported
+		BIOS is upgradeable
+		BIOS shadowing is allowed
+		Boot from CD is supported
+		Selectable boot is supported
+		EDD is supported
+		5.25"/1.2 MB floppy services are supported (int 13h)
+		3.5"/720 kB floppy services are supported (int 13h)
+		3.5"/2.88 MB floppy services are supported (int 13h)
+		Print screen service is supported (int 5h)
+		8042 keyboard services are supported (int 9h)
+		Serial services are supported (int 14h)
+		Printer services are supported (int 17h)
+		CGA/mono video services are supported (int 10h)
+		ACPI is supported
+		USB legacy is supported
+		ATAPI Zip drive boot is supported
+		Smart battery is supported
+		BIOS boot specification is supported
+		Targeted content distribution is supported
+		UEFI is supported
+	BIOS Revision: 65.7
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+	Manufacturer: Dell Inc.
+	Product Name: Inspiron 3543
+	Version: A07
+	Serial Number: H488B32
+	UUID: 4C4C4544-0034-3810-8038-C8C04F423332
+	Wake-up Type: Power Switch
+	SKU Number: 0656
+	Family:                       
+
+Handle 0x0002, DMI type 2, 15 bytes
+Base Board Information
+	Manufacturer: Dell Inc.
+	Product Name: 0V162V
+	Version:    
+	Serial Number: .H488B32.CN762065860DPT.
+	Asset Tag: Not Specified
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis:                       
+	Chassis Handle: 0x0003
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0003, DMI type 3, 22 bytes
+Chassis Information
+	Manufacturer: Dell Inc.
+	Type: Portable
+	Lock: Not Present
+	Version: Not Specified
+	Serial Number: H488B32
+	Asset Tag: Not Specified
+	Boot-up State: Safe
+	Power Supply State: Safe
+	Thermal State: Safe
+	Security Status: None
+	OEM Information: 0x00000000
+	Height: Unspecified
+	Number Of Power Cords: 1
+	Contained Elements: 0
+	SKU Number:                       
+
+Handle 0x002C, DMI type 4, 42 bytes
+Processor Information
+	Socket Designation: SOCKET 0
+	Type: Central Processor
+	Family: Core i7
+	Manufacturer: Intel(R) Corporation
+	ID: D4 06 03 00 FF FB EB BF
+	Signature: Type 0, Family 6, Model 61, Stepping 4
+	Flags:
+		FPU (Floating-point unit on-chip)
+		VME (Virtual mode extension)
+		DE (Debugging extension)
+		PSE (Page size extension)
+		TSC (Time stamp counter)
+		MSR (Model specific registers)
+		PAE (Physical address extension)
+		MCE (Machine check exception)
+		CX8 (CMPXCHG8 instruction supported)
+		APIC (On-chip APIC hardware supported)
+		SEP (Fast system call)
+		MTRR (Memory type range registers)
+		PGE (Page global enable)
+		MCA (Machine check architecture)
+		CMOV (Conditional move instruction supported)
+		PAT (Page attribute table)
+		PSE-36 (36-bit page size extension)
+		CLFSH (CLFLUSH instruction supported)
+		DS (Debug store)
+		ACPI (ACPI supported)
+		MMX (MMX technology supported)
+		FXSR (FXSAVE and FXSTOR instructions supported)
+		SSE (Streaming SIMD extensions)
+		SSE2 (Streaming SIMD extensions 2)
+		SS (Self-snoop)
+		HTT (Multi-threading)
+		TM (Thermal monitor supported)
+		PBE (Pending break enabled)
+	Version: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+	Voltage: 1.1 V
+	External Clock: 100 MHz
+	Max Speed: 2400 MHz
+	Current Speed: 2900 MHz
+	Status: Populated, Enabled
+	Upgrade: <OUT OF SPEC>
+	L1 Cache Handle: 0x0029
+	L2 Cache Handle: 0x002A
+	L3 Cache Handle: 0x002B
+	Serial Number: NULL
+	Asset Tag: Not Specified
+	Part Number: Not Specified
+	Core Count: 2
+	Core Enabled: 2
+	Thread Count: 4
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Hardware Thread
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+Handle 0x0028, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L1 Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 32 kB
+	Maximum Size: 32 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Data
+	Associativity: 8-way Set-associative
+
+Handle 0x0029, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L1 Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 32 kB
+	Maximum Size: 32 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Instruction
+	Associativity: 8-way Set-associative
+
+Handle 0x002A, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 256 kB
+	Maximum Size: 256 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 8-way Set-associative
+
+Handle 0x002B, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L3 Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 4096 kB
+	Maximum Size: 4096 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Multi-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x0004, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J1A1
+	Internal Connector Type: None
+	External Reference Designator: Keyboard
+	External Connector Type: PS/2
+	Port Type: Keyboard Port
+
+Handle 0x0005, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J2A2B
+	Internal Connector Type: None
+	External Reference Designator: Video
+	External Connector Type: DB-15 female
+	Port Type: Video Port
+
+Handle 0x0006, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J3A1
+	Internal Connector Type: None
+	External Reference Designator: USB1
+	External Connector Type: Access Bus (USB)
+	Port Type: USB
+
+Handle 0x0007, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J3A1
+	Internal Connector Type: None
+	External Reference Designator: USB2
+	External Connector Type: Access Bus (USB)
+	Port Type: USB
+
+Handle 0x0008, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J3A1
+	Internal Connector Type: None
+	External Reference Designator: USB3
+	External Connector Type: Access Bus (USB)
+	Port Type: USB
+
+Handle 0x0009, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J5A1
+	Internal Connector Type: None
+	External Reference Designator: LAN
+	External Connector Type: RJ-45
+	Port Type: Network Port
+
+Handle 0x000A, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J2B3 - CPU FAN
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x000B, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J9E1 - SCAN MATRIX
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x000C, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J9G1 - LPC SIDE BAND
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x000D, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J2G1 - GFX VID
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x000E, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J1G6 - AC JACK
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x000F, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J1H1 - BATT A
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x0010, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J7J3 - SATA PORT1
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x0011, DMI type 8, 9 bytes
+Port Connector Information
+	Internal Reference Designator: J8J1 - SATA PORT0
+	Internal Connector Type: Other
+	External Reference Designator: Not Specified
+	External Connector Type: None
+	Port Type: Other
+
+Handle 0x0012, DMI type 9, 17 bytes
+System Slot Information
+	Designation: J6B2
+	Type: x16 PCI Express
+	Current Usage: In Use
+	Length: Long
+	ID: 0
+	Characteristics:
+		3.3 V is provided
+		Opening is shared
+		PME signal is supported
+	Bus Address: 0000:00:01.0
+
+Handle 0x0013, DMI type 9, 17 bytes
+System Slot Information
+	Designation: J6B1
+	Type: x1 PCI Express
+	Current Usage: In Use
+	Length: Short
+	ID: 1
+	Characteristics:
+		3.3 V is provided
+		Opening is shared
+		PME signal is supported
+	Bus Address: 0000:00:1c.3
+
+Handle 0x0014, DMI type 10, 6 bytes
+On Board Device Information
+	Type: Video
+	Status: Enabled
+	Description: Mobile Intel HD Graphics
+
+Handle 0x0015, DMI type 11, 5 bytes
+OEM Strings
+	String 1: Dell System
+	String 2: 1[0656h]
+	String 3: 3[3.3]
+	String 4: 4[0001]
+	String 5: 6[D0, D4, D8, D9, DB, DC, DD]
+	String 6: 10[A07]
+	String 7: 13[P40F]
+	String 8: 14[0]
+	String 9: 15[11]
+
+Handle 0x0016, DMI type 12, 5 bytes
+System Configuration Options
+	Option 1:                       
+
+Handle 0x0038, DMI type 13, 22 bytes
+BIOS Language Information
+	Language Description Format: Long
+	Installable Languages: 1
+		en|US|iso8859-1
+	Currently Installed Language: en|US|iso8859-1
+
+Handle 0x003A, DMI type 14, 26 bytes
+Group Associations
+	Name: Firmware Version Info
+	Items: 7
+		0x0027 (<OUT OF SPEC>)
+		0x002D (<OUT OF SPEC>)
+		0x0032 (<OUT OF SPEC>)
+		0x0033 (<OUT OF SPEC>)
+		0x0034 (<OUT OF SPEC>)
+		0x0035 (<OUT OF SPEC>)
+		0x0036 (<OUT OF SPEC>)
+
+Handle 0x002E, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 8 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 1
+
+Handle 0x002F, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x002E
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 8192 MB
+	Form Factor: SODIMM
+	Set: None
+	Locator: DIMM_A
+	Bank Locator: BANK 0
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1600 MHz
+	Manufacturer: Hynix/Hyundai
+	Serial Number: 3A1AE52B
+	Asset Tag: 01154900  
+	Part Number: HMT41GS6BFR8A-PB  
+	Rank: 2
+	Configured Clock Speed: 1600 MHz
+
+Handle 0x0030, DMI type 19, 31 bytes
+Memory Array Mapped Address
+	Starting Address: 0x00000000000
+	Ending Address: 0x001FFFFFFFF
+	Range Size: 8 GB
+	Physical Array Handle: 0x002E
+	Partition Width: 1
+
+Handle 0x0031, DMI type 20, 35 bytes
+Memory Device Mapped Address
+	Starting Address: 0x00000000000
+	Ending Address: 0x001FFFFFFFF
+	Range Size: 8 GB
+	Physical Device Handle: 0x002F
+	Memory Array Mapped Address Handle: 0x0030
+	Partition Row Position: 1
+	Interleave Position: 1
+	Interleaved Data Depth: 1
+
+Handle 0x0017, DMI type 21, 7 bytes
+Built-in Pointing Device
+	Type: Touch Pad
+	Interface: Bus Mouse
+	Buttons: 2
+
+Handle 0x0018, DMI type 22, 26 bytes
+Portable Battery
+	Location: Sys. Battery Bay
+	Manufacturer: Samsung SDI        
+	Serial Number: 11372        
+	Name: DELL XRDW253
+	Chemistry: Lithium Ion
+	Design Capacity: 41440 mWh
+	Design Voltage: 14800 mV
+	SBDS Version: 1.0                
+	Maximum Error: 2%
+	SBDS Manufacture Date: 2015-03-10
+	OEM-specific Information: 0x00000001
+
+Handle 0x0019, DMI type 32, 20 bytes
+System Boot Information
+	Status: No errors detected
+
+Handle 0x001A, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation:  Onboard IGD
+	Type: Video
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:00:02.0
+
+Handle 0x001B, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation:  Onboard LAN
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:00:19.0
+
+Handle 0x001D, DMI type 27, 12 bytes
+Cooling Device
+	Type: Fan
+	Status: OK
+	OEM-specific Information: 0x00000000
+
+Handle 0x001E, DMI type 28, 20 bytes
+Temperature Probe
+	Description: CPU Internal Temperature
+	Location: Processor
+	Status: OK
+	Maximum Value: 127.0 deg C
+	Minimum Value: 0.0 deg C
+	Resolution: 1.000 deg C
+	Tolerance: 0.5 deg C
+	Accuracy: Unknown
+	OEM-specific Information: 0x00000000
+
+Handle 0x0039, DMI type 131, 64 bytes
+OEM-specific Type
+	Header and Data:
+		83 40 39 00 31 00 00 00 00 00 00 00 00 00 00 00
+		F8 00 C3 9C 00 00 00 00 01 60 00 00 00 00 0A 00
+		00 04 2D 00 00 00 00 00 C8 00 FF FF 00 00 00 00
+		00 00 00 00 66 00 00 00 76 50 72 6F 00 00 00 00
+
+Handle 0x0037, DMI type 136, 6 bytes
+OEM-specific Type
+	Header and Data:
+		88 06 37 00 00 00
+
+Handle 0xB000, DMI type 176, 10 bytes
+OEM-specific Type
+	Header and Data:
+		B0 0A 00 B0 00 00 00 00 56 06
+
+Handle 0xB100, DMI type 177, 12 bytes
+OEM-specific Type
+	Header and Data:
+		B1 0C 00 B1 1A 0E 00 00 00 00 00 00
+
+Handle 0x0021, DMI type 208, 12 bytes
+OEM-specific Type
+	Header and Data:
+		D0 0C 21 00 02 05 FE 00 56 06 01 02
+	Strings:
+		20150807
+		20150807
+
+Handle 0x0022, DMI type 212, 57 bytes
+OEM-specific Type
+	Header and Data:
+		D4 39 22 00 70 00 71 00 01 51 58 50 9C 00 51 FC
+		01 9B 00 51 FC 00 7F 01 52 FB 04 80 01 52 FB 00
+		53 01 52 F7 08 52 01 52 F7 08 7B 01 52 EF 10 7C
+		01 52 EF 10 FF FF 00 00 00
+
+Handle 0x0023, DMI type 216, 9 bytes
+OEM-specific Type
+	Header and Data:
+		D8 09 23 00 01 02 01 00 00
+	Strings:
+		INTEL
+		0000
+
+Handle 0x0024, DMI type 217, 8 bytes
+OEM-specific Type
+	Header and Data:
+		D9 08 24 00 01 02 00 00
+	Strings:
+		           
+		            
+
+Handle 0x0025, DMI type 219, 11 bytes
+OEM-specific Type
+	Header and Data:
+		DB 0B 25 00 00 01 02 03 00 04 05
+	Strings:
+		            
+		            
+		            
+		            
+		            
+
+Handle 0x0026, DMI type 220, 22 bytes
+OEM-specific Type
+	Header and Data:
+		DC 16 26 00 01 F0 00 00 02 F0 00 00 00 00 03 F0
+		04 F0 00 00 00 00
+
+Handle 0x0027, DMI type 221, 19 bytes
+OEM-specific Type
+	Header and Data:
+		DD 13 27 00 00 00 00 00 00 03 00 00 00 00 00 00
+		00 00 00
+
+Handle 0x002D, DMI type 221, 12 bytes
+OEM-specific Type
+	Header and Data:
+		DD 0C 2D 00 01 01 00 02 09 00 00 00
+	Strings:
+		Reference Code - ACPI
+
+Handle 0x0032, DMI type 221, 12 bytes
+OEM-specific Type
+	Header and Data:
+		DD 0C 32 00 01 01 00 02 09 00 00 00
+	Strings:
+		Reference Code - Intel Rapid Start
+
+Handle 0x0033, DMI type 221, 54 bytes
+OEM-specific Type
+	Header and Data:
+		DD 36 33 00 07 01 00 02 09 00 00 00 02 00 02 09
+		00 00 00 03 00 02 09 00 00 00 04 05 FF FF FF FF
+		FF 06 00 FF FF FF 09 00 07 00 FF FF FF 09 00 08
+		00 FF FF FF 00 00
+	Strings:
+		Reference Code - SA - System Agent
+		Reference Code - MRC
+		SA - PCIe Version
+		SA-CRID Status
+		Disabled
+		SA-CRID Original Value
+		SA-CRID New Value
+		OPROM - VBIOS
+
+Handle 0x0034, DMI type 221, 26 bytes
+OEM-specific Type
+	Header and Data:
+		DD 1A 34 00 03 01 00 02 09 00 00 00 02 00 0A 00
+		00 01 00 03 04 0A 00 2D 00 04
+	Strings:
+		Reference Code - ME 10.0
+		MEBx version
+		ME Firmware Version
+		1.5MB SKU
+
+Handle 0x0035, DMI type 221, 68 bytes
+OEM-specific Type
+	Header and Data:
+		DD 44 35 00 09 01 00 02 09 00 00 00 02 03 FF FF
+		FF FF FF 04 00 FF FF FF 03 00 05 00 FF FF FF 03
+		00 06 00 FF FF FF FF FF 07 00 19 00 00 00 00 08
+		00 2C 00 00 00 00 09 00 03 00 00 00 00 0A 00 01
+		00 00 00 00
+	Strings:
+		Reference Code - PCH - Lynxpoint
+		PCH-CRID Status
+		Disabled
+		PCH-CRID Original Value
+		PCH-CRID New Value
+		OPROM - RST - RAID
+		LPTLp Bx Hsio Version
+		LPTH Cx Hsio Version
+		PCH9S A0 Hsio Version
+		WPTLp B0 Hsio Version
+
+Handle 0x0036, DMI type 221, 26 bytes
+OEM-specific Type
+	Header and Data:
+		DD 1A 36 00 03 01 00 02 09 00 00 00 02 00 00 00
+		00 1F 00 03 00 00 05 00 00 00
+	Strings:
+		Reference Code - CPU
+		uCode Version
+		TXT ACM version
+
+Handle 0x003B, DMI type 127, 4 bytes
+End Of Table
+
+
